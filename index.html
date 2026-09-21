@@ -395,6 +395,31 @@ body::before{
     text-shadow:0 1px 4px rgba(0,0,0,.4);
 }
 
+/* FELIZ DIA */
+
+.feliz-dia{
+    display:block;
+    margin-top:15px;
+    font-size:clamp(24px,5vw,38px);
+    font-weight:bold;
+    color:#fffde7;
+    text-shadow:
+        0 0 8px #fff,
+        0 0 18px #fff176,
+        0 0 30px #ffd54f,
+        0 0 45px #ffb300;
+    animation:felizBrillo 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes felizBrillo{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.06);
+    }
+}
+
 /* BOTON */
 
 button{
@@ -677,6 +702,11 @@ button:hover{
         line-height:1.45;
     }
 
+    .feliz-dia{
+        font-size:26px;
+        margin-top:12px;
+    }
+
     button{
         font-size:14px;
         padding:10px 20px;
@@ -696,6 +726,7 @@ button:hover{
 <!-- ESTRELLAS -->
 
 <div class="estrellas">
+
     <div class="estrella"></div>
     <div class="estrella"></div>
     <div class="estrella"></div>
@@ -708,16 +739,19 @@ button:hover{
     <div class="estrella"></div>
     <div class="estrella"></div>
     <div class="estrella"></div>
+
 </div>
 
 <!-- LUCES -->
 
 <div class="luces">
+
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
     <div class="luz"></div>
+
 </div>
 
 <!-- PETALOS QUE CAEN -->
@@ -765,26 +799,18 @@ button:hover{
 
     </div>
 
-    <!-- MENSAJE -->
+    <!-- MENSAJE NUEVO -->
 
     <div class="mensaje">
 
         <p>
-Hay flores que simplemente son bonitas...
-y hay personas que hacen que todo
-parezca un poquito más bonito.
+Por si aún no te dieron una flor virtual 🌻
 
-Esta flor es para ti. 💛
+Ya que no te conozco, pero el detalle es lo que cuenta. 💛
 
-No importa dónde estés,
-espero que al verla puedas sonreír
-aunque sea un poquito.
+Si perdemos la racha, te tuqueo 😂
 
-Que nunca te falten razones para sonreír,
-momentos que recordar
-y personas que te quieran bonito.
-
-♥
+<span class="feliz-dia">¡Feliz día, señorita! 🌻✨</span>
         </p>
 
         <button onclick="mostrarMensaje()">
@@ -905,7 +931,7 @@ y personas que te quieran bonito.
 function mostrarMensaje(){
 
     alert(
-        "Si pudiera regalarte una flor de verdad, probablemente elegiría la más bonita... pero incluso así, creo que se quedaría corta. 🌻💛"
+        "Aunque no te conozco, espero que esta pequeña flor te saque una sonrisa. 🌻💛"
     );
 
 }
