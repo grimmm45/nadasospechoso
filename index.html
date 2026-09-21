@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una flor para ti 🌻</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Georgia,serif;
+    color:white;
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #fffde7 0%,
+            #ffe9a3 14%,
+            #f5c84c 30%,
+            #c08020 52%,
+            #63390d 75%,
+            #211003 100%
+        );
+}
+
+/* LUZ PRINCIPAL */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:rgba(255,225,90,.25);
+    filter:blur(90px);
+    left:50%;
+    top:38%;
+    transform:translate(-50%,-50%);
+    animation:brillo 5s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+
+@keyframes brillo{
+    from{
+        transform:translate(-50%,-50%) scale(.8);
+        opacity:.4;
+    }
+
+    to{
+        transform:translate(-50%,-50%) scale(1.2);
+        opacity:.9;
+    }
+}
+
+/* ESTRELLAS */
+
+.star{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:white;
+    box-shadow:
+        0 0 8px white,
+        0 0 18px #ffd54f;
+    animation:estrella 2s infinite alternate;
+    z-index:2;
+}
+
+@keyframes estrella{
+    from{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+/* LUCES FLOTANTES */
+
+.luz{
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#fff7b0;
+    box-shadow:0 0 15px #ffd54f;
+    animation:subir 5s ease-in-out infinite;
+    z-index:2;
+}
+
+@keyframes subir{
+    0%,100%{
+        transform:translateY(20px);
+        opacity:.2;
+    }
+
+    50%{
+        transform:translateY(-30px);
+        opacity:1;
+    }
+}
+
+/* PETALOS QUE CAEN */
+
+.petalo-caida{
+    position:absolute;
+    top:-30px;
+    width:13px;
+    height:20px;
+    background:linear-gradient(
+        135deg,
+        #fff176,
+        #ffc107
+    );
+    border-radius:80% 20% 80% 20%;
+    opacity:.8;
+    z-index:4;
+    animation:caer linear infinite;
+}
+
+@keyframes caer{
+
+    0%{
+        transform:
+            translateY(-30px)
+            translateX(0)
+            rotate(0deg);
+    }
+
+    50%{
+        transform:
+            translateY(50vh)
+            translateX(-70px)
+            rotate(360deg);
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(100px)
+            rotate(720deg);
+    }
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    z-index:10;
+}
+
+/* TITULO */
+
+.titulo{
+    position:absolute;
+    top:6%;
+    width:90%;
+    text-align:center;
+    animation:aparecer 2.5s ease;
+    z-index:20;
+}
+
+.titulo h1{
+    font-size:clamp(34px,8vw,60px);
+    color:#fffde7;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #ffd54f,
+        0 0 50px #ffb300;
+}
+
+.titulo p{
+    margin-top:8px;
+    font-size:clamp(14px,3.5vw,20px);
+    color:#fff8d6;
+
+    text-shadow:
+        0 2px 8px #4d2c00;
+}
+
+/* FLOR PRINCIPAL */
+
+.flor{
+    position:relative;
+    width:270px;
+    height:370px;
+    margin-top:60px;
+
+    animation:flotar 4s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 15px 20px
+            rgba(0,0,0,.35)
+        );
+}
+
+@keyframes flotar{
+
+    0%,100%{
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+    50%{
+        transform:
+            translateY(-12px)
+            rotate(1deg);
+    }
+}
+
+/* TALLO */
+
+.tallo{
+    position:absolute;
+    width:14px;
+    height:220px;
+    left:128px;
+    top:125px;
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            to right,
+            #19380d,
+            #76b52d,
+            #315d19
+        );
+}
+
+/* HOJAS */
+
+.hoja{
+    position:absolute;
+    width:105px;
+    height:48px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8acb38,
+            #315d19
+        );
+
+    border-radius:100% 0 100% 0;
+
+    box-shadow:
+        inset 0 2px 5px
+        rgba(255,255,255,.2);
+}
+
+.hoja.izquierda{
+    top:250px;
+    left:45px;
+    transform:rotate(25deg);
+}
+
+.hoja.derecha{
+    top:200px;
+    right:38px;
+    transform:
+        scaleX(-1)
+        rotate(25deg);
+}
+
+/* CABEZA */
+
+.cabeza{
+    position:absolute;
+    width:220px;
+    height:220px;
+    top:0;
+    left:25px;
+
+    animation:
+        florecer
+        2.5s
+        ease-out
+        forwards;
+}
+
+@keyframes florecer{
+
+    0%{
+        transform:
+            scale(.1)
+            rotate(-20deg);
+
+        opacity:0;
+    }
+
+    70%{
+        transform:
+            scale(1.08)
+            rotate(5deg);
+    }
+
+    100%{
+        transform:
+            scale(1)
+            rotate(0);
+
+        opacity:1;
+    }
+}
+
+/* PETALOS PRINCIPALES */
+
+.petalo{
+    position:absolute;
+
+    width:78px;
+    height:125px;
+
+    left:71px;
+    top:48px;
+
+    border-radius:
+        55% 55%
+        45% 45%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff9a0,
+            #ffd600 50%,
+            #f9a825
+        );
+
+    transform-origin:
+        50% 100%;
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(255,255,255,.5),
+
+        0 4px 15px
+        rgba(100,60,0,.3);
+}
+
+.p1{transform:rotate(0deg)}
+.p2{transform:rotate(45deg)}
+.p3{transform:rotate(90deg)}
+.p4{transform:rotate(135deg)}
+.p5{transform:rotate(180deg)}
+.p6{transform:rotate(225deg)}
+.p7{transform:rotate(270deg)}
+.p8{transform:rotate(315deg)}
+
+/* CENTRO */
+
+.centro{
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    left:65px;
+    top:65px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #b7790d,
+            #5a3300 50%,
+            #281500 80%
+        );
+
+    box-shadow:
+        0 0 18px #ffb300,
+        0 0 35px
+        rgba(255,179,0,.5),
+
+        inset 0 0 15px
+        rgba(0,0,0,.7);
+
+    z-index:10;
+}
+
+.centro::after{
+    content:"✦";
+
+    position:absolute;
+
+    left:34px;
+    top:31px;
+
+    color:#ffe082;
+    font-size:23px;
+
+    animation:
+        destello
+        1.5s
+        infinite
+        alternate;
+}
+
+@keyframes destello{
+
+    from{
+        transform:scale(.7);
+        opacity:.5;
+    }
+
+    to{
+        transform:scale(1.3);
+        opacity:1;
+    }
+}
+
+/* MENSAJE */
+
+.mensaje{
+    position:absolute;
+
+    bottom:4%;
+
+    width:90%;
+    max-width:650px;
+
+    text-align:center;
+
+    animation:
+        mensaje
+        4s
+        ease;
+
+    z-index:30;
+}
+
+.mensaje p{
+    font-size:
+        clamp(
+            15px,
+            4vw,
+            21px
+        );
+
+    line-height:1.55;
+
+    color:#fffde7;
+
+    text-shadow:
+        0 2px 8px #4d2c00,
+        0 0 12px
+        rgba(0,0,0,.35);
+}
+
+.resaltado{
+    font-size:1.15em;
+    font-weight:bold;
+
+    color:#fff59d;
+
+    text-shadow:
+        0 0 8px #ffd54f,
+        0 2px 5px #593500;
+}
+
+.corazon{
+    color:#ffeb3b;
+    font-size:27px;
+    display:inline-block;
+
+    animation:
+        latido
+        1.2s
+        infinite;
+}
+
+@keyframes latido{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.35);
+    }
+}
+
+/* ANIMACIONES */
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+}
+
+@keyframes mensaje{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+}
+
+/* CAMPO DE FLORES */
+
+.campo{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:170px;
+
+    z-index:6;
+
+    pointer-events:none;
+}
+
+/* SUELO */
+
+.pasto{
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:75px;
+
+    background:
+        linear-gradient(
+            to top,
+            #102305,
+            #294d10 55%,
+            transparent
+        );
+
+    opacity:.95;
+}
+
+/* FLOR PEQUEÑA */
+
+.flor-mini{
+    position:absolute;
+
+    width:55px;
+    height:80px;
+
+    bottom:45px;
+
+    animation:
+        moverFlor
+        4s
+        ease-in-out
+        infinite;
+}
+
+.flor-mini .pet{
+    position:absolute;
+
+    width:20px;
+    height:32px;
+
+    left:18px;
+    top:3px;
+
+    border-radius:60%;
+
+    background:
+        linear-gradient(
+            #fff176,
+            #ffc107
+        );
+
+    transform-origin:
+        50% 100%;
+}
+
+.flor-mini .p1{
+    transform:rotate(0deg);
+}
+
+.flor-mini .p2{
+    transform:rotate(60deg);
+}
+
+.flor-mini .p3{
+    transform:rotate(120deg);
+}
+
+.flor-mini .p4{
+    transform:rotate(180deg);
+}
+
+.flor-mini .p5{
+    transform:rotate(240deg);
+}
+
+.flor-mini .p6{
+    transform:rotate(300deg);
+}
+
+.mini-centro{
+    position:absolute;
+
+    width:22px;
+    height:22px;
+
+    left:17px;
+    top:18px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #9b650c,
+            #3d2100
+        );
+
+    z-index:3;
+}
+
+.mini-tallo{
+    position:absolute;
+
+    width:5px;
+    height:55px;
+
+    left:25px;
+    top:38px;
+
+    background:
+        linear-gradient(
+            to right,
+            #315d19,
+            #76a82b,
+            #315d19
+        );
+
+    z-index:-1;
+}
+
+@keyframes moverFlor{
+
+    0%,100%{
+        transform:rotate(-2deg);
+    }
+
+    50%{
+        transform:
+            rotate(3deg)
+            translateY(-5px);
+    }
+}
+
+/* POSICIONES */
+
+.f1{
+    left:2%;
+    transform:scale(.8);
+}
+
+.f2{
+    left:11%;
+    bottom:25px;
+    transform:scale(.65);
+    animation-delay:1s;
+}
+
+.f3{
+    left:20%;
+    transform:scale(1);
+    animation-delay:.5s;
+}
+
+.f4{
+    left:31%;
+    bottom:20px;
+    transform:scale(.7);
+    animation-delay:1.5s;
+}
+
+.f5{
+    left:41%;
+    transform:scale(.75);
+    animation-delay:2s;
+}
+
+.f6{
+    left:52%;
+    bottom:25px;
+    transform:scale(.95);
+    animation-delay:.8s;
+}
+
+.f7{
+    left:63%;
+    transform:scale(.7);
+    animation-delay:1.3s;
+}
+
+.f8{
+    left:73%;
+    bottom:15px;
+    transform:scale(1);
+    animation-delay:.3s;
+}
+
+.f9{
+    left:84%;
+    transform:scale(.75);
+    animation-delay:1.8s;
+}
+
+.f10{
+    left:94%;
+    bottom:20px;
+    transform:scale(.9);
+    animation-delay:.7s;
+}
+
+/* BOTON */
+
+button{
+    margin-top:12px;
+
+    padding:
+        10px 23px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.55);
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    color:#fffde7;
+
+    font-family:Georgia,serif;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 4px 20px
+        rgba(0,0,0,.2);
+
+    transition:.3s;
+}
+
+button:hover{
+    background:
+        rgba(255,255,255,.28);
+
+    transform:scale(1.07);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,213,79,.5);
+}
+
+/* MOVIL */
+
+@media(max-width:600px){
+
+    .titulo{
+        top:4%;
+    }
+
+    .titulo h1{
+        font-size:38px;
+    }
+
+    .titulo p{
+        font-size:14px;
+    }
+
+    .flor{
+        transform:scale(.70);
+        margin-top:40px;
+    }
+
+    .mensaje{
+        bottom:2%;
+        width:94%;
+    }
+
+    .mensaje p{
+        font-size:15px;
+        line-height:1.4;
+    }
+
+    .campo{
+        height:130px;
+    }
+
+    .flor-mini{
+        transform:scale(.65);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ESTRELLAS -->
+
+<div class="star" style="top:12%;left:12%"></div>
+<div class="star" style="top:20%;left:80%;animation-delay:.8s"></div>
+<div class="star" style="top:35%;left:7%;animation-delay:1.2s"></div>
+<div class="star" style="top:42%;left:91%;animation-delay:.5s"></div>
+<div class="star" style="top:70%;left:15%;animation-delay:1.5s"></div>
+<div class="star" style="top:62%;left:84%;animation-delay:.3s"></div>
+<div class="star" style="top:82%;left:75%;animation-delay:1s"></div>
+
+<!-- LUCES -->
+
+<div class="luz" style="left:20%;top:30%;animation-delay:.5s"></div>
+<div class="luz" style="left:35%;top:18%;animation-delay:2s"></div>
+<div class="luz" style="left:67%;top:25%;animation-delay:1s"></div>
+<div class="luz" style="left:78%;top:48%;animation-delay:3s"></div>
+<div class="luz" style="left:12%;top:55%;animation-delay:1.5s"></div>
+<div class="luz" style="left:88%;top:70%;animation-delay:2.5s"></div>
+
+<!-- PETALOS -->
+
+<div class="petalo-caida" style="left:5%;animation-duration:7s"></div>
+<div class="petalo-caida" style="left:14%;animation-duration:9s;animation-delay:2s"></div>
+<div class="petalo-caida" style="left:24%;animation-duration:6s;animation-delay:1s"></div>
+<div class="petalo-caida" style="left:35%;animation-duration:8s;animation-delay:3s"></div>
+<div class="petalo-caida" style="left:48%;animation-duration:7s;animation-delay:3.5s"></div>
+<div class="petalo-caida" style="left:58%;animation-duration:9s;animation-delay:1.5s"></div>
+<div class="petalo-caida" style="left:68%;animation-duration:7s;animation-delay:2s"></div>
+<div class="petalo-caida" style="left:78%;animation-duration:10s;animation-delay:.5s"></div>
+<div class="petalo-caida" style="left:88%;animation-duration:6s;animation-delay:2.5s"></div>
+<div class="petalo-caida" style="left:96%;animation-duration:8s;animation-delay:4s"></div>
+
+
+<!-- CAMPO -->
+
+<div class="campo">
+
+    <div class="flor-mini f1">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f2">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f3">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f4">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f5">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f6">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f7">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f8">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f9">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="flor-mini f10">
+        <div class="mini-tallo"></div>
+        <div class="pet p1"></div>
+        <div class="pet p2"></div>
+        <div class="pet p3"></div>
+        <div class="pet p4"></div>
+        <div class="pet p5"></div>
+        <div class="pet p6"></div>
+        <div class="mini-centro"></div>
+    </div>
+
+    <div class="pasto"></div>
+
+</div>
+
+
+<!-- CONTENIDO PRINCIPAL -->
+
+<div class="contenedor">
+
+    <div class="titulo">
+        <h1>Para ti 🌻</h1>
+        <p>Porque hoy quería regalarte algo bonito...</p>
+    </div>
+
+
+    <!-- FLOR GRANDE -->
+
+    <div class="flor">
+
+        <div class="cabeza">
+
+            <div class="petalo p1"></div>
+            <div class="petalo p2"></div>
+            <div class="petalo p3"></div>
+            <div class="petalo p4"></div>
+            <div class="petalo p5"></div>
+            <div class="petalo p6"></div>
+            <div class="petalo p7"></div>
+            <div class="petalo p8"></div>
+
+            <div class="centro"></div>
+
+        </div>
+
+        <div class="tallo"></div>
+
+        <div class="hoja izquierda"></div>
+        <div class="hoja derecha"></div>
+
+    </div>
+
+
+    <!-- MENSAJE -->
+
+    <div class="mensaje">
+
+        <p>
+
+            Hay flores que simplemente son bonitas...
+            <br>
+
+            y hay personas que hacen que todo
+            parezca un poquito más bonito.
+
+            <br><br>
+
+            <span class="resaltado">
+                Esta flor es para ti. 💛
+            </span>
+
+            <br><br>
+
+            No importa dónde estés,
+            espero que al verla puedas sonreír
+            aunque sea un poquito.
+
+            <br><br>
+
+            Que nunca te falten razones para sonreír,
+            momentos que recordar
+            y personas que te quieran bonito.
+
+            <br><br>
+
+            <span class="corazon">♥</span>
+
+        </p>
+
+        <button onclick="mensaje()">
+            Una última cosita ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function mensaje(){
+
+    alert(
+        "Si pudiera regalarte una flor de verdad, " +
+        "probablemente elegiría la más bonita... " +
+        "pero incluso así, creo que se quedaría corta. 🌻💛"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
